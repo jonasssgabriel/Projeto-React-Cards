@@ -1,68 +1,138 @@
 :root {
+  --bg: #0d0f12;
+  --bg-elev: #15181e;
+  --text: #ffffff;
+  --muted: #cfcfcf;
+  --link: #7aa2ff;
+  --link-hover: #a9c1ff;
+  --primary: #3b82f6;
+  --primary-hover: #fdfdfd;
+  --border: #2a2f3d;
+  --ring: #60a5fa;
+
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+  color: var(--text);
+  background: var(--bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { height: 100%; }
 
 body {
-  margin: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+h1, h2, h3 { letter-spacing: -0.02em; }
+h1 { font-size: clamp(2rem, 3.8vw, 3rem); margin-bottom: 1.5rem; }
+p  { color: var(--muted); }
+
+a {
+  font-weight: 600;
+  color: var(--link);
+  text-decoration: none;
+  transition: color .2s ease, text-shadow .2s ease;
+}
+a:hover {
+  color: var(--link-hover);
+  text-shadow: 0 0 8px var(--link-hover);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
+button, .btn {
+  appearance: none;
+  border: none;
+  border-radius: 9999px;
   padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 600;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: transform .1s ease, box-shadow .2s ease, background .2s ease;
 }
-button:hover {
-  border-color: #646cff;
+
+.btn--primary {
+  background: var(--primary);
+  color: #000000;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.btn--primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,.4);
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  width: 100%;
+  max-width: 1100px;
+  justify-items: center;
+  align-items: start;
+}
+
+.card {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 20px;
+  width: 100%;
+  max-width: 260px;
+  min-height: 220px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  transition: transform .15s ease, box-shadow .2s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 17, 255, 0.5);
+  border-color: var(--ring);
+}
+
+.card img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto;
+  border: 3px solid var(--primary);
+}
+
+.card h3 {
+  margin-top: 8px;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+.card p {
+  font-size: 0.95rem;
+  color: var(--muted);
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    --bg: #000000;
+    --bg-elev: #000000;
+    --text: #ffffff;
+    --muted: #ffffff;
+    --link: #ffffff;
+    --link-hover: rgba(0, 17, 255, 0.5);
+    --primary: #ffffff;
+    --primary-hover: rgba(0, 17, 255, 0.5);
+    --border: #d1d5db;
+    --ring: rgba(0, 17, 255, 0.5);
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+  .aluno-info {
+    font-weight: 700;   /* deixa em bold */
+    margin-bottom: 24px; /* dá espaçamento abaixo */
+    font-size: 1rem;    /* pode ajustar o tamanho se quiser */
+    text-align: center; /* centraliza abaixo do título */
   }
 }
