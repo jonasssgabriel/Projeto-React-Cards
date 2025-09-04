@@ -1,9 +1,8 @@
-// 1. Importamos o CSS para estilização e nosso novo componente.
+
 import "./App.css";
 import ProfileCard from "./components/ProfileCard";
 
 function App() {
-  // 2. Dados
   const profilesData = [
     {
       id: 1,
@@ -28,11 +27,10 @@ function App() {
     },
   ];
 
-  // 3. Separo o primeiro card (seu) e ordeno os outros alfabeticamente
+
   const [first, ...others] = profilesData;
   const sortedOthers = [...others].sort((a, b) => a.name.localeCompare(b.name));
 
-  // 4. Renderização com .map()
   return (
     <div className="container">
       <h1>Projeto React Cards</h1>
@@ -41,9 +39,7 @@ function App() {
       </p>
       
 
-      {/* Use a classe 'grid' que já está no seu CSS para colocar lado a lado */}
       <div className="grid">
-        {/* Primeiro card (seu) */}
         <ProfileCard
           key={first.id}
           name={first.name}
@@ -52,7 +48,7 @@ function App() {
           github={first.github}
         />
 
-        {/* Demais cards em ordem alfabética */}
+
         {sortedOthers.map((profile) => (
           <ProfileCard
             key={profile.id}
